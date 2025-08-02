@@ -1,6 +1,5 @@
 import streamlit as st
-import openai
-from langchain_openai import ChatOpenAI
+
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_ollama import ChatOllama
@@ -43,4 +42,5 @@ if user_input:
     response=generate_response(question=user_input,llm=llm,temperature=temperature,max_token=max_tokens)
     st.write(response)
 else:
+
     st.write("Please provide the query")
