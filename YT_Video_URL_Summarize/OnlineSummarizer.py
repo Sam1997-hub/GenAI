@@ -48,7 +48,7 @@ with st.sidebar:
 generic_url = st.text_input("URL", label_visibility="collapsed")
 
 # LLM setup
-llm = ChatGroq(model="Gemma-7b-It", groq_api_key=groq_api_key)
+llm = ChatGroq(model="Gemma2-9b-It", groq_api_key=groq_api_key)
 
 prompt_template = """
 Provide a summary of the following content in 300 words:
@@ -89,3 +89,4 @@ if st.button("Summarize the Content from YT or Website"):
                 st.success(output_summary)
         except Exception as e:
             st.exception(f"Exception: {e}")
+
