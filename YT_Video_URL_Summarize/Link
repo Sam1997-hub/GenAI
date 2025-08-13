@@ -1,0 +1,8 @@
+THe link to my above work is:
+https://eefrtjdrqjig7s9uxpumb5.streamlit.app/
+
+We are using Google's Gemma 9B-IT for this summarization.
+Groq is being used to call the model's API.
+You will require a Groq API key which comes free of cost upto a certain usage limit.
+Also You will need to provide a link.
+This model may require finetuning which I intend to do in the future.
