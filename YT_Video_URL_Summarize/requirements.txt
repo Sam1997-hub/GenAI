@@ -1,6 +1,7 @@
 langchain
 python-dotenv
 ipykernel
+yt_dlp
 langchain-community
 pypdf
 bs4
@@ -29,4 +30,5 @@ youtube_transcript_api
 unstructured
 pytube
 numexpr
+
 huggingface_hub
