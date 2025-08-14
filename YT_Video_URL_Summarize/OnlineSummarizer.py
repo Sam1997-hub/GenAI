@@ -55,6 +55,17 @@ Provide a summary of the following content in 300 words:
 Content:{text}
 """
 prompt = PromptTemplate(template=prompt_template, input_variables=["text"])
+refine_prompt = PromptTemplate(
+    input_variables=["existing_answer", "text"],
+    template="""Your job is to refine the existing summary with new context.
+Existing summary:
+{existing_answer}
+
+New text:
+{text}
+
+Refined summary:"""
+)
 
 # ---------- Main Button Action ----------
 if st.button("Summarize the Content from YT or Website"):
@@ -83,10 +94,11 @@ if st.button("Summarize the Content from YT or Website"):
                     docs = loader.load()
 
                 # Summarization
-                chain = load_summarize_chain(llm, chain_type="stuff", prompt=prompt)
+                chain = load_summarize_chain(llm, chain_type="refine", question_prompt=prompt,refine_prompt=refine_prompt)
                 output_summary = chain.run(docs)
 
                 st.success(output_summary)
         except Exception as e:
             st.exception(f"Exception: {e}")
+
 
