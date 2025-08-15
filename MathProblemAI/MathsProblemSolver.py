@@ -6,9 +6,10 @@ from langchain_community.utilities import WikipediaAPIWrapper
 from langchain.agents.agent_types import AgentType
 from langchain.agents import Tool,initialize_agent
 import os
-from langchain.callbacks import StreamlitCallbackHandler,LangChainTracer
+from langchain.callbacks import StreamlitCallbackHandler,LangChainTracerV2
 os.environ["LANGCHAIN_TRACING_V2"] = "true"
 os.environ["LANGCHAIN_API_KEY"] = st.secrets["LANGCHAIN_API_KEY"]  # or input
+tracer = LangChainTracerV2()
 
 
 
@@ -83,7 +84,7 @@ if st.button("Find my answer"):
             st.session_state.messages.append({"role":"user","content":question})
             st.chat_message("user").write(question)
             st_cb=StreamlitCallbackHandler(st.container(),expand_new_thoughts=False)
-            response=assistant_agent.run(st.session_state.messages,callbacks=[st_cb])
+            response=assistant_agent.run(st.session_state.messages,callbacks=[st_cb,tracer])
 
             st.session_state.messages.append({'role':'assistant','content':response})
             st.write("###Response :")
@@ -91,4 +92,5 @@ if st.button("Find my answer"):
     else:
 
         st.warning("Enter Input")
+
 
