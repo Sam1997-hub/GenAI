@@ -5,7 +5,12 @@ from langchain.prompts import PromptTemplate
 from langchain_community.utilities import WikipediaAPIWrapper
 from langchain.agents.agent_types import AgentType
 from langchain.agents import Tool,initialize_agent
-from langchain.callbacks import StreamlitCallbackHandler
+import os
+from langchain.callbacks import StreamlitCallbackHandler,LangChainTracer
+os.environ["LANGCHAIN_TRACING_V2"] = "true"
+os.environ["LANGCHAIN_API_KEY"] = st.secrets["LANGCHAIN_API_KEY"]  # or input
+
+tracer = LangChainTracer()
 
 #Set up the Streamlit app
 st.set_page_config(page_title="Text to Math Problem Solver and Data Search Assistant")
@@ -84,4 +89,5 @@ if st.button("Find my answer"):
             st.write("###Response :")
             st.success(response)
     else:
+
         st.warning("Enter Input")
