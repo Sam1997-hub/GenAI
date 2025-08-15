@@ -1,0 +1,5 @@
+This is a Text to Math Problem Solver.
+It uses Gemma 2 as the back end LLM which we are calling with Groq's Api call.
+Link of the same:
+https://nbgwktwrfeazc8qpzl42yb.streamlit.app/
+Groq's passkey is required for this.
