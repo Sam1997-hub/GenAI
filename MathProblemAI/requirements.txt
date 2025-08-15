@@ -6,6 +6,7 @@ pypdf
 beautifulsoup4
 arxiv
 pymupdf
+numexpr
 langchain-text-splitters
 dotenv
 langchain-openai
@@ -34,4 +35,5 @@ validators==0.28.1
 youtube_transcript_api
 unstructured
 pytube
+
 
