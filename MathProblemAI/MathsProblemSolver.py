@@ -6,10 +6,12 @@ from langchain_community.utilities import WikipediaAPIWrapper
 from langchain.agents.agent_types import AgentType
 from langchain.agents import Tool,initialize_agent
 import os
-from langchain.callbacks import StreamlitCallbackHandler,LangChainTracerV2
+from langchain.callbacks import StreamlitCallbackHandler
+from langchain.callbacks.tracers import LangChainTracer
 os.environ["LANGCHAIN_TRACING_V2"] = "true"
 os.environ["LANGCHAIN_API_KEY"] = st.secrets["LANGCHAIN_API_KEY"]  # or input
-tracer = LangChainTracerV2()
+os.environ["LANGCHAIN_PROJECT"] = "Math Bot"  # op
+tracer = LangChainTracer()
 
 
 
@@ -92,5 +94,6 @@ if st.button("Find my answer"):
     else:
 
         st.warning("Enter Input")
+
 
 
